@@ -7,7 +7,7 @@
 	<h1>Contacts</h1>
 	<table border="1">
 		<c:forEach var="contact" items="${contacts}">
-			<tr>
+			<tr> 
 				<td><a href="/contact?id=${contact.id}">${contact.id}</a></td>
 				<td>${contact.name}</td>
 				<td><a href="/contact?edit=1&id=${contact.id}">Edit Contact</a></td>
