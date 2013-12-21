@@ -54,10 +54,10 @@ public class ContactServlet extends HttpServlet {
 					request.getParameter("state"),
 					request.getParameter("street"), Integer.parseInt(request
 							.getParameter("zip")));
-			addressRepository.save(address);
+			address=addressRepository.save(address);
 			Contact contact = new Contact(request.getParameter("name"),
 					address.getId());
-			contactRepository.save(contact);
+			contact=contactRepository.save(contact);
 			response.sendRedirect("/contactList");
 		} else if (request.getParameter("delete") != null) {
 			Contact contact = contactRepository.find(Long.parseLong(request

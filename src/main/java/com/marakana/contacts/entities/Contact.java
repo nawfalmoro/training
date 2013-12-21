@@ -15,6 +15,7 @@ public class Contact {
 	@Column
 	private Long adresseId;
 
+	public Contact(){};
 	public Contact(String name, Long adresseId) {
 		super();
 		this.name = name;

@@ -15,13 +15,18 @@ public class Repository<E> {
 	public Repository(Class<E> entityClass){
 		this.entityClass=entityClass;
 	}
-	public void save(E entity) {
-		em.merge(entity);
+	public E save(E entity) {
+		em.getTransaction().begin();
+		entity=em.merge(entity);
+		em.getTransaction().commit();
+		return entity;
 	}
 
 
 	public void delete(E entity) {
+		em.getTransaction().begin();
 		em.remove(entity);
+		em.getTransaction().commit();
 
 	}
 
