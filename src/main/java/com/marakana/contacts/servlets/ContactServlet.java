@@ -32,7 +32,7 @@ public class ContactServlet extends HttpServlet {
 		} else {
 			Long id = Long.parseLong(request.getParameter("id"));
 			Contact contact = contactRepository.find(id);
-			Address address = addressRepository.find(contact.getAdresseId());
+			Address address = addressRepository.find(contact.getAddress().getId());
 			request.setAttribute("contact", contact);
 			request.setAttribute("address", address);
 			if (request.getParameter("edit") != null) {
@@ -56,13 +56,13 @@ public class ContactServlet extends HttpServlet {
 							.getParameter("zip")));
 			address=addressRepository.save(address);
 			Contact contact = new Contact(request.getParameter("name"),
-					address.getId());
+					address);
 			contact=contactRepository.save(contact);
 			response.sendRedirect("/contactList");
 		} else if (request.getParameter("delete") != null) {
 			Contact contact = contactRepository.find(Long.parseLong(request
 					.getParameter("id")));
-			Address address = addressRepository.find(contact.getAdresseId());
+			Address address = addressRepository.find(contact.getAddress().getId());
 			contactRepository.delete(contact);
 			addressRepository.delete(address);
 			response.sendRedirect("/contactList");
@@ -73,7 +73,7 @@ public class ContactServlet extends HttpServlet {
 							.getParameter("zip")));
 			address.setId(Long.parseLong(request.getParameter("adresseId")));
 			Contact contact = new Contact(request.getParameter("name"),
-					Long.parseLong(request.getParameter("adresseId")));
+					address);
 			contact.setId(Long.parseLong(request.getParameter("id")));
 			addressRepository.save(address);
 			contactRepository.save(contact);

@@ -8,7 +8,7 @@
 	<form action="contact" method="post">
 	<input type="hidden" name="save">
 	<input type="hidden" name="id" value="${contact.id}">
-	<input type="hidden" name="adresseId" value="${contact.adresseId}">
+	<input type="hidden" name="adresseId" value="${address.id}">
 		<ul>
 			<li>name: <input type="text" name="name" value="${contact.name}"></li>
 			<li>street: <input type="text" name="street" value="${address.street}"></li>
