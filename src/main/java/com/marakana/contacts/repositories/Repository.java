@@ -30,6 +30,6 @@ public class Repository<E> {
 	}
 	
 	public List<E> findAll(){
-		return em.createQuery("from"+entityClass.getName(),entityClass).getResultList();
+		return em.createQuery("from "+entityClass.getSimpleName(),entityClass).getResultList();
 	}
 }

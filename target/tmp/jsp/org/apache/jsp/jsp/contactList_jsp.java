@@ -96,7 +96,7 @@ public final class contactList_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t<tr>\r\n");
+          out.write("\t\t\t<tr> \r\n");
           out.write("\t\t\t\t<td><a href=\"/contact?id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${contact.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
