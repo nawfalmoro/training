@@ -1,7 +1,6 @@
 package com.marakana.contacts.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -26,12 +25,7 @@ public class ContactListServlet extends HttpServlet {
 		// instantiate an address repository
 		ContactRepository contactRepository = new ContactRepository();
 		List<Contact> contacts=null;
-		try {
 			contacts=contactRepository.findAll();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		request.setAttribute("contacts", contacts);
 		RequestDispatcher view = request.getRequestDispatcher("jsp/contactList.jsp");
 		view.forward(request, response);
