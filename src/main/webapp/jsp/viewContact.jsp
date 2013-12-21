@@ -7,6 +7,7 @@
 	<h1>View Contact : ${contact.name}</h1>
 		<ul>
 			<li>name: ${contact.name}</li>
+			<c:set var="address" value="${contact.address}"></c:set>
 			<li>street: ${address.street}</li>
 			<li>city:${address.city}</li>
 			<li>zip: ${address.zip}</li>

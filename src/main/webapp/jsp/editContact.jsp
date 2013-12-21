@@ -8,6 +8,7 @@
 	<form action="contact" method="post">
 	<input type="hidden" name="save">
 	<input type="hidden" name="id" value="${contact.id}">
+	<c:set var="address" value="${contact.address}"></c:set>
 	<input type="hidden" name="adresseId" value="${address.id}">
 		<ul>
 			<li>name: <input type="text" name="name" value="${contact.name}"></li>
