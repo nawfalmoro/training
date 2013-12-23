@@ -17,6 +17,6 @@
 		</ul>
 		<input type="submit" value="add">
 	</form>
-	<a href="/contactList">Back to contacts list</a>
+	<a href="/contacts">Back to contacts list</a>
 </body>
 </html>
