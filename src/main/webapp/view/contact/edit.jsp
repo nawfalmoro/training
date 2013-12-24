@@ -6,7 +6,7 @@
 <body>
 	<h1>Edit Contact : ${contact.name}</h1>
 	<form action="contact" method="post">
-	<input type="hidden" name="save">
+	<input type="hidden" name="edit">
 	<input type="hidden" name="id" value="${contact.id}">
 	<c:set var="address" value="${contact.address}"></c:set>
 	<input type="hidden" name="adresseId" value="${address.id}">
@@ -18,7 +18,7 @@
 			<li>state: <input type="text" name="state" value="${address.state}"></li>
 		
 		</ul>
-		<input type="submit" value="save">
+		<input type="submit" value="edit">
 	</form>
 	<form action="contact" method="post">
 		<input type="hidden" name="delete">
