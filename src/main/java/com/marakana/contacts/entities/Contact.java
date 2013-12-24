@@ -1,11 +1,9 @@
 package com.marakana.contacts.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Contact {
@@ -14,14 +12,13 @@ public class Contact {
 	private Long id;
 	@Column
 	private String name;
-	@OneToOne(cascade=CascadeType.ALL)
-	private Address address;
 
-	public Contact(){};
-	public Contact(String name, Address address) {
+	public Contact() {
+	}
+
+	public Contact(String name) {
 		super();
 		this.name = name;
-		this.address = address;
 	}
 
 	public long getId() {
@@ -39,14 +36,4 @@ public class Contact {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-	
-
-
 }
