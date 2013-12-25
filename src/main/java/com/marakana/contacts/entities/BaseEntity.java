@@ -9,6 +9,8 @@ public abstract class BaseEntity {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	abstract public String getUrl(); 
 
 	public Long getId() {
 		return id;

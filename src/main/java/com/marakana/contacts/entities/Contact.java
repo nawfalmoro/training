@@ -28,5 +28,4 @@ public abstract class Contact extends BaseEntity {
 		this.name = name;
 	}
 
-	public abstract String getUrl();
 }

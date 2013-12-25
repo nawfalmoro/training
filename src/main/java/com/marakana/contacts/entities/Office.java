@@ -50,6 +50,12 @@ public class Office extends BaseEntity {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
+
+	@Override
+	public String getUrl() {
+		// TODO Auto-generated method stub
+		return "/company?id=";
+	}
 	
 	
 
