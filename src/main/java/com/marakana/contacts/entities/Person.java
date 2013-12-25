@@ -2,25 +2,22 @@ package com.marakana.contacts.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Person extends Contact{
-	@OneToOne(cascade=CascadeType.ALL)
+public class Person extends Contact {
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
-	public Person(){
+	public Person() {
 
 	}
-	
-	public Person (String name,Address address){
+
+	public Person(String name, Address address) {
 		super(name);
-		this.address=address;
+		this.address = address;
 	}
-	
+
 	public Address getAddress() {
 		return address;
 	}
@@ -34,7 +31,5 @@ public class Person extends Contact{
 		// TODO Auto-generated method stub
 		return "/person?id=";
 	}
-	
-	
 
 }

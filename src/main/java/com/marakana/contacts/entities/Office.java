@@ -3,16 +3,20 @@ package com.marakana.contacts.entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Office extends BaseEntity {
 
 	@Column
-	String name;
+	private String name;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	Address address;
+	private Address address;
+
+	@ManyToOne
+	private Company company;
 
 	public Office() {
 
@@ -38,5 +42,15 @@ public class Office extends BaseEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	
+	
 
 }
