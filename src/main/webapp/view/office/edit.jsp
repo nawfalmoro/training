@@ -24,6 +24,6 @@
 		<input type="hidden" name="id" value="${office.id}">
 		<input type="submit" value="Delete">
 	</form>
-	<a href="${office.company.url}${office.company.id}">Back to ${office.company.name}</a>
+	<a href="${office.company.url}">Back to ${office.company.name}</a>
 </body>
 </html>

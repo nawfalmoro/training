@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marakana.contacts.entities.Address;
 import com.marakana.contacts.entities.Office;
+import com.marakana.contacts.repositories.CompanyRepository;
 import com.marakana.contacts.repositories.OfficeRepository;
 
 @Controller
@@ -17,8 +18,12 @@ public class OfficeController {
 	@Autowired
 	private OfficeRepository officeRepository;
 
+	@Autowired
+	private CompanyRepository companyRepository;
+
 	@RequestMapping(value = "/office", params = "add", method = RequestMethod.GET)
-	public String getAddOffice() {
+	public String getAddOffice(@RequestParam Long company_id, Model model) {
+		model.addAttribute("company", companyRepository.findOne(company_id));
 		return "office/add";
 	}
 
@@ -37,17 +42,20 @@ public class OfficeController {
 	@RequestMapping(value = "/office", params = "add", method = RequestMethod.POST)
 	public String postAddOffice(@RequestParam String name,
 			@RequestParam String city, @RequestParam String state,
-			@RequestParam String street, @RequestParam int zip) {
+			@RequestParam String street, @RequestParam int zip,
+			@RequestParam Long company_id) {
 		Address address = new Address(city, state, street, zip);
-		Office office = new Office(name, address);
+		Office office = new Office(name, address,
+				companyRepository.findOne(company_id));
 		office = (Office) officeRepository.save(office);
-		return "redirect:office?id=" + office.getId();
+		return "redirect:" + office.getUrl();
 	}
 
 	@RequestMapping(value = "/office", params = "delete", method = RequestMethod.POST)
 	public String postDeleteOffice(@RequestParam Long id) {
-		officeRepository.delete(id);
-		return "redirect:contacts";
+		Office office = officeRepository.findOne(id);
+		officeRepository.delete(office);
+		return "redirect:" + office.getCompany().getUrl();
 	}
 
 	@RequestMapping(value = "/office", params = "edit", method = RequestMethod.POST)
@@ -62,8 +70,7 @@ public class OfficeController {
 		office.getAddress().setStreet(street);
 		office.getAddress().setZip(zip);
 		officeRepository.save(office);
-		return "redirect:office?id=" + office.getId();
+		return "redirect:" + office.getUrl();
 
 	}
 }
-

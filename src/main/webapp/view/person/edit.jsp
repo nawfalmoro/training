@@ -25,6 +25,6 @@
 		<input type="hidden" name="id" value="${person.id}">
 		<input type="submit" value="Delete">
 	</form>
-	<a href="/person?id=${person.id}">Back to Persons View</a>
+	<a href="${person.url}">Back to Persons View</a>
 </body>
 </html>

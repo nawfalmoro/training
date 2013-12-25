@@ -15,7 +15,7 @@
 		
 		</ul>
 	</form>
-	<a href="${office.url}${office.id}&edit=1">Edit Office</a>
-	<a href="/contacts">Back to contacts list</a>
+	<a href="${office.url}&edit=1">Edit Office</a>
+	<a href="${office.company.url }">Back to Company view</a>
 </body>
 </html>

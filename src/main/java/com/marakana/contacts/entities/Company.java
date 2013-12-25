@@ -3,11 +3,17 @@ package com.marakana.contacts.entities;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Company extends Contact {
 
+
+	@OneToMany(mappedBy = "company", fetch=FetchType.EAGER)
+	Set<Office> offices;
+	
+	
 	public Company() {
 
 	}
@@ -21,9 +27,6 @@ public class Company extends Contact {
 		this.offices = offices;
 	}
 
-	@OneToMany(mappedBy = "company")
-	Set<Office> offices;
-
 	public Set<Office> getOffices() {
 		return offices;
 	}
@@ -31,11 +34,4 @@ public class Company extends Contact {
 	public void setOffices(Set<Office> offices) {
 		this.offices = offices;
 	}
-
-	@Override
-	public String getUrl() {
-		// TODO Auto-generated method stub
-		return "/company?id=";
-	}
-
 }

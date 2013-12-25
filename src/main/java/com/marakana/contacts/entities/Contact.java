@@ -7,7 +7,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Contact extends BaseEntity {
+public abstract class Contact extends UrlEntity {
 
 	@Column
 	private String name;

@@ -15,7 +15,7 @@
 		
 		</ul>
 	</form>
-	<a href="/person?edit=1&id=${person.id}">Edit Person</a>
+	<a href="${person.url}&edit=1">Edit Person</a>
 	<a href="/contacts">Back to contacts list</a>
 </body>
 </html>

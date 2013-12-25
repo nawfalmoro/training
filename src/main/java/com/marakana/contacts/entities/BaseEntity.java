@@ -5,12 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class BaseEntity {
+public class BaseEntity {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	abstract public String getUrl(); 
 
 	public Long getId() {
 		return id;

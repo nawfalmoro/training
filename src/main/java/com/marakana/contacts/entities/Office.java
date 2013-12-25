@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Office extends BaseEntity {
+public class Office extends UrlEntity {
 
 	@Column
 	private String name;
@@ -22,9 +22,10 @@ public class Office extends BaseEntity {
 
 	}
 
-	public Office(String name, Address address) {
+	public Office(String name, Address address, Company company) {
 		this.name = name;
 		this.address = address;
+		this.company=company;
 	}
 
 	public Address getAddress() {
@@ -50,13 +51,4 @@ public class Office extends BaseEntity {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
-
-	@Override
-	public String getUrl() {
-		// TODO Auto-generated method stub
-		return "/company?id=";
-	}
-	
-	
-
 }

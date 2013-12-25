@@ -8,9 +8,9 @@
 	<table border="1">
 		<c:forEach var="contact" items="${contacts}">
 			<tr> 
-				<td><a href="/person?id=${contact.id}">${contact.id}</a></td>
+				<td><a href="${contact.url}">${contact.id}</a></td>
 				<td>${contact.name}</td>
-				<td><a href="${contact.url}${contact.id}&edit=1">Edit Contact</a></td>
+				<td><a href="${contact.url}&edit=1">Edit Contact</a></td>
 			</tr>
 		</c:forEach>
 	</table>

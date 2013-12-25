@@ -28,7 +28,7 @@
 				</form>
 			</td>
 			<td><input type="button" value="Back to Company view"
-				onclick="location.href='/company?id=${company.id}';"></td>
+				onclick="location.href='${company.url}';"></td>
 
 		</tr>
 	</table>
