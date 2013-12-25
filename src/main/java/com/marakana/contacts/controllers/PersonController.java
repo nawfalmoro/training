@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marakana.contacts.entities.Address;
 import com.marakana.contacts.entities.Person;
-import com.marakana.contacts.repositories.ContactRepository;
+import com.marakana.contacts.repositories.PersonRepository;
 
 @Controller
 public class PersonController {
 
 	@Autowired
-	private ContactRepository contactRepository;
+	private PersonRepository personRepository;
 
 	@RequestMapping(value = "/person", params = "add", method = RequestMethod.GET)
 	public String getAddPerson() {
@@ -24,13 +24,13 @@ public class PersonController {
 
 	@RequestMapping(value = "/person", params = "edit", method = RequestMethod.GET)
 	public String getEditPerson(@RequestParam long id, Model model) {
-		model.addAttribute("person", contactRepository.findOne(id));
+		model.addAttribute("person", personRepository.findOne(id));
 		return "person/edit";
 	}
 
 	@RequestMapping(value = "/person", method = RequestMethod.GET)
 	public String getViewPerson(@RequestParam Long id, Model model) {
-		model.addAttribute("person", contactRepository.findOne(id));
+		model.addAttribute("person", personRepository.findOne(id));
 		return "person/view";
 	}
 
@@ -40,13 +40,13 @@ public class PersonController {
 			@RequestParam String street, @RequestParam int zip) {
 		Address address = new Address(city, state, street, zip);
 		Person person = new Person(name, address);
-		person = (Person) contactRepository.save(person);
+		person = (Person) personRepository.save(person);
 		return "redirect:person?id=" + person.getId();
 	}
 
 	@RequestMapping(value = "/person", params = "delete", method = RequestMethod.POST)
 	public String postDeletePerson(@RequestParam Long id) {
-		contactRepository.delete(id);
+		personRepository.delete(id);
 		return "redirect:contacts";
 	}
 
@@ -55,13 +55,13 @@ public class PersonController {
 			@RequestParam String name, @RequestParam String city,
 			@RequestParam String state, @RequestParam String street,
 			@RequestParam int zip) {
-		Person person = (Person) contactRepository.findOne(id);
+		Person person = (Person) personRepository.findOne(id);
 		person.setName(name);
 		person.getAddress().setCity(city);
 		person.getAddress().setState(state);
 		person.getAddress().setStreet(street);
 		person.getAddress().setZip(zip);
-		contactRepository.save(person);
+		personRepository.save(person);
 		return "redirect:person?id=" + person.getId();
 
 	}
