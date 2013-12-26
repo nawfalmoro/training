@@ -10,7 +10,7 @@ import javax.persistence.CascadeType;
 @Entity
 public class Company extends Contact {
 
-	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "company", orphanRemoval=true,cascade = CascadeType.ALL)
 	Set<Office> offices;
 
 	public Company() {
