@@ -12,7 +12,8 @@
 			<li>city:${address.city}</li>
 			<li>zip: ${address.zip}</li>
 			<li>state: ${address.state}</li>
-		
+			<li>Manager: <a href="${person.manager.url}">${person.manager.name}</a></li>
+			<li>Employer: <a href="${person.employer.url}">${person.employer.name}</a></li>
 		</ul>
 	</form>
 	<a href="${person.url}&edit=1">Edit Person</a>

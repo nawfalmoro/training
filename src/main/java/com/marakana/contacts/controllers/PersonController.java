@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marakana.contacts.entities.Address;
 import com.marakana.contacts.entities.Person;
+import com.marakana.contacts.repositories.CompanyRepository;
 import com.marakana.contacts.repositories.PersonRepository;
 
 @Controller
@@ -17,14 +18,21 @@ public class PersonController {
 	@Autowired
 	private PersonRepository personRepository;
 
+	@Autowired
+	private CompanyRepository companyRepository;
+
 	@RequestMapping(value = "/person", params = "add", method = RequestMethod.GET)
-	public String getAddPerson() {
+	public String getAddPerson(Model model) {
+		model.addAttribute("employers", companyRepository.findAll());
+		model.addAttribute("managers", personRepository.findAll());
 		return "person/add";
 	}
 
 	@RequestMapping(value = "/person", params = "edit", method = RequestMethod.GET)
 	public String getEditPerson(@RequestParam long id, Model model) {
 		model.addAttribute("person", personRepository.findOne(id));
+		model.addAttribute("employers", companyRepository.findAll());
+		model.addAttribute("managers", personRepository.findAll());
 		return "person/edit";
 	}
 

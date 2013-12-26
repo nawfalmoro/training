@@ -2,16 +2,26 @@ package com.marakana.contacts.entities;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import javax.persistence.CascadeType;
 
 @Entity
 public class Company extends Contact {
 
-	@OneToMany(mappedBy = "company", orphanRemoval=true,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "company", orphanRemoval = true, cascade = CascadeType.ALL)
 	Set<Office> offices;
+
+	@OneToMany(mappedBy = "employer")
+	Set<Person> employees;
+
+	public Set<Person> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Person> employees) {
+		this.employees = employees;
+	}
 
 	public Company() {
 

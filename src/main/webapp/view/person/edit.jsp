@@ -16,7 +16,22 @@
 			<li>city: <input type="text" name="city" value="${address.city}"></li>
 			<li>zip: <input type="text" name="zip" value="${address.zip}"></li>
 			<li>state: <input type="text" name="state" value="${address.state}"></li>
-		
+			<li>Manager 
+				<select name="manager_id">
+						<option value="0"></option>
+						<c:forEach items="${managers}" var="employee">
+							<option value="${id}">${employee.name}</option>
+						</c:forEach>
+				</select>
+			</li>
+			<li>Employer: 
+				<select name="employer_id">
+						<option value="0"></option>
+						<c:forEach items="${employers}" var="employer">
+							<option value="${id}">${employer.name}</option>
+						</c:forEach>
+				</select>
+			</li>
 		</ul>
 		<input type="submit" value="edit">
 	</form>

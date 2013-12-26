@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Contact extends UrlEntity {
 
 	@Column(nullable=false, length=64)
+	@NotBlank
 	private String name;
 
 	public Contact() {
