@@ -20,7 +20,14 @@
 				<select name="manager_id">
 						<option value="0"></option>
 						<c:forEach items="${managers}" var="employee">
-							<option value="${employee.id}">${employee.name}</option>
+							<c:choose>
+								<c:when test="${employee==person.manager}">
+									<option value="${employee.id}" selected>${employee.name}</option>
+								</c:when>
+								<c:otherwise>
+									 <option value="${employee.id}">${employee.name}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 				</select>
 			</li>
@@ -28,7 +35,15 @@
 				<select name="employer_id">
 						<option value="0"></option>
 						<c:forEach items="${employers}" var="employer">
-							<option value="${employer.id}">${employer.name}</option>
+							<c:choose>
+								<c:when test="${employer==person.employer}">
+									<option value="${employer.id}" selected>${employer.name}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${employer.id}">${employer.name}</option>
+								</c:otherwise>
+							</c:choose>
+							
 						</c:forEach>
 				</select>
 			</li>
