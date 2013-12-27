@@ -20,7 +20,7 @@
 				<select name="manager_id">
 						<option value="0"></option>
 						<c:forEach items="${managers}" var="employee">
-							<option value="${id}">${employee.name}</option>
+							<option value="${employee.id}">${employee.name}</option>
 						</c:forEach>
 				</select>
 			</li>
@@ -28,7 +28,7 @@
 				<select name="employer_id">
 						<option value="0"></option>
 						<c:forEach items="${employers}" var="employer">
-							<option value="${id}">${employer.name}</option>
+							<option value="${employer.id}">${employer.name}</option>
 						</c:forEach>
 				</select>
 			</li>

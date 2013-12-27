@@ -2,6 +2,7 @@ package com.marakana.contacts.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,12 +41,14 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/company", params = "delete", method = RequestMethod.POST)
+	@Transactional
 	public String postDeleteCompany(@RequestParam Long id) {
 		companyRepository.delete(id);
 		return "redirect:contacts";
 	}
 
 	@RequestMapping(value = "/company", params = "edit", method = RequestMethod.POST)
+	@Transactional
 	public String postEditCompany(@RequestParam Long id,
 			@RequestParam String name) {
 		Company company = (Company) companyRepository.findOne(id);

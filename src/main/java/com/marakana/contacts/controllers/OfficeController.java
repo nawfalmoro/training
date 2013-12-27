@@ -2,6 +2,7 @@ package com.marakana.contacts.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,6 +53,7 @@ public class OfficeController {
 	}
 
 	@RequestMapping(value = "/office", params = "delete", method = RequestMethod.POST)
+	@Transactional
 	public String postDeleteOffice(@RequestParam Long id) {
 		Office office = officeRepository.findOne(id);
 		officeRepository.delete(office);
@@ -59,6 +61,7 @@ public class OfficeController {
 	}
 
 	@RequestMapping(value = "/office", params = "edit", method = RequestMethod.POST)
+	@Transactional
 	public String postEditOffice(@RequestParam Long id,
 			@RequestParam String name, @RequestParam String city,
 			@RequestParam String state, @RequestParam String street,
