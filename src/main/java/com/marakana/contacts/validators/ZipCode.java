@@ -9,14 +9,13 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 
 @Documented
-@Constraint(validatedBy = EmployeeValidator.class)
-@Target(ElementType.TYPE)
+@Constraint(validatedBy = ZipCodeValidator.class)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Employee {
-	String message() default "manager and employee must work for the same employer, and manager chain must be acyclic";
+public @interface ZipCode {
+	String message() default "Zip Code must be a 5 digit code";
 
 	Class<?>[] groups() default {};
 
 	Class<?>[] payload() default {};
-
 }

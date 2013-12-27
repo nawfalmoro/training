@@ -46,7 +46,7 @@ public class PersonController {
 	@RequestMapping(value = "/person", params = "add", method = RequestMethod.POST)
 	public String postAddPerson(@RequestParam String name,
 			@RequestParam String city, @RequestParam String state,
-			@RequestParam String street, @RequestParam int zip,
+			@RequestParam String street, @RequestParam String zip,
 			@RequestParam Long employer_id, @RequestParam Long manager_id) {
 		Address address = new Address(city, state, street, zip);
 		Person person = new Person(name, address);
@@ -68,7 +68,7 @@ public class PersonController {
 	public String postEditPerson(@RequestParam Long id,
 			@RequestParam String name, @RequestParam String city,
 			@RequestParam String state, @RequestParam String street,
-			@RequestParam int zip, @RequestParam Long employer_id,
+			@RequestParam String zip, @RequestParam Long employer_id,
 			@RequestParam Long manager_id) {
 		Person person = (Person) personRepository.findOne(id);
 		person.setName(name);

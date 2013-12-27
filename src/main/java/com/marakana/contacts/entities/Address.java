@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.marakana.contacts.validators.ZipCode;
+
 @Entity
 public class Address {
 	
@@ -18,11 +20,12 @@ public class Address {
 	@Column
 	private String street;
 	@Column
-	private int zip;
+	@ZipCode
+	private String zip;
 	
 	public Address(){};
 	
-	public Address(String city, String state, String street, int zip) {
+	public Address(String city, String state, String street, String zip) {
 		super();
 		this.city = city;
 		this.state = state;
@@ -53,10 +56,10 @@ public class Address {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public int getZip() {
+	public String getZip() {
 		return zip;
 	}
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 	

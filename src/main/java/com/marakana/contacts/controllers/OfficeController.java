@@ -43,7 +43,7 @@ public class OfficeController {
 	@RequestMapping(value = "/office", params = "add", method = RequestMethod.POST)
 	public String postAddOffice(@RequestParam String name,
 			@RequestParam String city, @RequestParam String state,
-			@RequestParam String street, @RequestParam int zip,
+			@RequestParam String street, @RequestParam String zip,
 			@RequestParam Long company_id) {
 		Address address = new Address(city, state, street, zip);
 		Office office = new Office(name, address,
@@ -65,7 +65,7 @@ public class OfficeController {
 	public String postEditOffice(@RequestParam Long id,
 			@RequestParam String name, @RequestParam String city,
 			@RequestParam String state, @RequestParam String street,
-			@RequestParam int zip) {
+			@RequestParam String zip) {
 		Office office = (Office) officeRepository.findOne(id);
 		office.setName(name);
 		office.getAddress().setCity(city);
